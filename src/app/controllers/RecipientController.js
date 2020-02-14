@@ -92,15 +92,21 @@ class RecipientController {
   async destroy(req, res) {
     const { id } = req.params;
 
-    const recipientExists = await Recipient.destroy({
+    /*     const recipientExists = await Recipient.destroy({
       where: { id },
-    });
+    }); */
 
-    if (!recipientExists) {
+    const recipient = await Recipient.findByPk(id);
+
+    if (!recipient) {
       return res.status(400).json({ error: 'Recipient does not exists' });
     }
 
-    return res.sendStatus(200);
+    recipient.deleted_at = new Date();
+
+    await recipient.save();
+
+    return res.sendStatus(recipient);
   }
 }
 
