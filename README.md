@@ -20,6 +20,8 @@
 
 <p align="center">
   <a href="#rocket-sobre-o-projeto">Sobre o Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-funcionalidades">Funcionalidades</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-tecnologias-utilizadas">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-licença">Licença</a>
 </p>
 
@@ -27,7 +29,61 @@
 
 Este projeto é o desenvolvimento de um back-end bem estruturado para uma transportadora fictícia, o FastFeet. **O Projeto está em andamento e em constante atualização**
 
-## :rocket: Tecnologias
+## :rocket: Funcionalidades
+
+Abaixo estão descritas as funcionalidades que você deve adicionar em sua aplicação.
+
+**1. Autenticação** :heavy_check_mark:
+
+Autenticação de usuário na aplicação utilizando e-mail e uma senha.
+
+- Autenticação feita utilizando JWT.
+- Validação dos dados de entrada.
+
+**2. Gestão de destinatários** :heavy_check_mark:
+
+O cadastro de destinatários é feito por administradores autenticados na aplicação.
+
+O destinatário não se autentica no sistema, por não possuir senha.
+
+**3. Gestão de entregadores** :heavy_check_mark:
+
+Administradores autenticados na aplicação realiza o cadastro de entregadores na plataforma.
+
+**4. Gestão de encomendas**
+
+Administradores autenticados cadastram encomendas para os entregadores. Para essa gestão, obedecem os seguintes critérios:
+
+- As retiradas só podem ser feitas entre as 08:00 e 18:00h.
+- A **data de início** é cadastrada assim que é feita a retirada do produto pelo entregador.
+- A **data de término** da entrega é cadatrada somente quando o entregador finaliza a determinada entrega.
+- Essa funcionalidade é permitida somente para administradores autenticados na aplicação.
+
+**5. Visualizar encomendas**
+
+O entregador pode visualizar as encomendas atribuidas a ele, que **não estejam entregues ou canceladas**;
+
+Permitido também que o mesmo possa listar as encomendas que já foram **entregues** por ele.
+
+**6. Alterar status de encomendas**
+
+É permitido ao entregador pode fazer **5 retiradas por dia**.
+
+Para a funcionalidade de finalizar a entrega, é permitido o envio de uma assinatura digital.
+
+**7. Cadastrar problemas nas entregas**
+
+O entregador nem sempre conseguirá entregar as encomendas com sucesso, algumas vezes o destinatário pode estar ausente, ou o próprio entregador poderá ter algum problema com seu veículo na hora de entregar. Com isso, é permitido:
+
+- Listar todas as entregas com algum problema.
+- Listar todos os problemas de uma determinada encomenda.
+- O entregador deve cadastrar eventuais problemas na entrega.
+
+A distribuidora pode cancelar uma entrega baseado no problema. Esse cancelamento pode acontecer devido a gravidade do problema da entrega, por exemplo, em caso de perda da encomenda.
+
+Obs: Quando uma encomenda é cancelada, o entregador recebe um e-mail informando-o sobre o cancelamento.
+
+## :rocket: Tecnologias utilizadas
 
 Technologies used in the development of the project:
 
@@ -39,6 +95,8 @@ Technologies used in the development of the project:
 - [Yup](https://github.com/jquense/yup)
 - [Docker](https://www.docker.com/)
 - [Postgres](https://www.postgresql.org/)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [multer](https://github.com/expressjs/multer)
 
 ## :memo: Licença
 
