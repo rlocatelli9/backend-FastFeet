@@ -44,6 +44,9 @@ jspm_packages/
 # Other directories
 .vscode/
 
+# avatar uploads
+**/tmp/uploads/
+
 # TypeScript v1 declaration files
 typings/
 
