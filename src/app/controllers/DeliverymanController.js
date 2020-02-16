@@ -95,11 +95,7 @@ class DeliverymanController {
       where: { id },
     }); */
 
-    const deliveryman = await Deliveryman.findOne({
-      where: {
-        id,
-      },
-    });
+    const deliveryman = await Deliveryman.findByPk(id);
 
     if (!deliveryman) {
       return res.status(400).json({ error: 'Deliveryman does not exists' });
