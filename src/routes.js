@@ -2,6 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import DeliverymanController from './app/controllers/DeliverymanController';
 import FileController from './app/controllers/FileController';
+import NotificationControle from './app/controllers/NotificationController';
 import OrderController from './app/controllers/OrderController';
 import RecipientController from './app/controllers/RecipientController';
 import SessionController from './app/controllers/SessionController';
@@ -14,6 +15,7 @@ const upload = multer(multerConfig);
 
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
+routes.get('/deliveryman/:id/notifications', NotificationControle.index);
 
 routes.use(authMiddleware);
 
