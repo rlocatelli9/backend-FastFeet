@@ -1,6 +1,7 @@
 import {} from '';
 import * as Yup from 'yup';
 import Queue from '../../lib/Queue';
+import CancellationMail from '../jobs/CancellationMail';
 import RegisterMail from '../jobs/RegisterMail';
 import Deliveryman from '../models/Deliveryman';
 import Order from '../models/Order';
@@ -103,9 +104,9 @@ class OrderController {
 
     await order.save();
 
-    /*  await Queue.add(CancellationMail.key, {
+    await Queue.add(CancellationMail.key, {
       order,
-    }); */
+    });
 
     return res.json(order);
   }
