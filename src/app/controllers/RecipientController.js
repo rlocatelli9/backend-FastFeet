@@ -90,7 +90,7 @@ class RecipientController {
     });
   }
 
-  async destroy(req, res) {
+  async delete(req, res) {
     const { id } = req.params;
 
     /*     const recipientExists = await Recipient.destroy({

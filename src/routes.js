@@ -30,8 +30,9 @@ routes.put('/recipients/:id', RecipientController.update);
 routes.put('/users', UserController.update);
 routes.put('/deliverers/:id', DeliverymanController.update);
 
-routes.delete('/recipients/:id', RecipientController.destroy);
-routes.delete('/deliverers/:id', DeliverymanController.destroy);
+routes.delete('/recipients/:id', RecipientController.delete);
+routes.delete('/deliverers/:id', DeliverymanController.delete);
+routes.delete('/problem/:id/cancel-delivery', OrderController.delete);
 
 routes.post('/files', upload.single('file'), FileController.store);
 
