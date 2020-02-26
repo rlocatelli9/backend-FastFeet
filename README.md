@@ -54,10 +54,10 @@ Administradores autenticados na aplicação realiza o cadastro de entregadores n
 
 Administradores autenticados cadastram encomendas para os entregadores. Para essa gestão, obedecem os seguintes critérios:
 
-- As retiradas só podem ser feitas entre as 08:00 e 18:00h.
-- A **data de início** é cadastrada assim que é feita a retirada do produto pelo entregador.
+- As retiradas só podem ser feitas entre as 08:00 e 18:00h. :heavy_check_mark:
+- A **data de início** é cadastrada assim que é feita a retirada do produto pelo entregador. :heavy_check_mark:
 - A **data de término** da entrega é cadatrada somente quando o entregador finaliza a determinada entrega.
-- Essa funcionalidade é permitida somente para administradores autenticados na aplicação.
+- Essa funcionalidade é permitida somente para administradores autenticados na aplicação. :heavy_check_mark:
 
 **5. Visualizar encomendas**
 
