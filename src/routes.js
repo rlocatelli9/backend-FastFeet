@@ -4,6 +4,7 @@ import DeliverymanController from './app/controllers/DeliverymanController';
 import FileController from './app/controllers/FileController';
 import NotificationControle from './app/controllers/NotificationController';
 import OrderController from './app/controllers/OrderController';
+import PickUpPackageController from './app/controllers/PickUpPackageController';
 import RecipientController from './app/controllers/RecipientController';
 import SessionController from './app/controllers/SessionController';
 import UserController from './app/controllers/UserController';
@@ -29,6 +30,8 @@ routes.post('/orders', OrderController.store);
 routes.put('/recipients/:id', RecipientController.update);
 routes.put('/users', UserController.update);
 routes.put('/deliverers/:id', DeliverymanController.update);
+routes.put('/orders/:id', OrderController.update);
+routes.put('/orders/:id/start/:idDeliveryman', PickUpPackageController.update);
 
 routes.delete('/recipients/:id', RecipientController.delete);
 routes.delete('/deliverers/:id', DeliverymanController.delete);
