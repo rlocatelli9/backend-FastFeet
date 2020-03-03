@@ -3,6 +3,7 @@ import Queue from '../../lib/Queue';
 import CancellationMail from '../jobs/CancellationMail';
 import RegisterMail from '../jobs/RegisterMail';
 import Deliveryman from '../models/Deliveryman';
+import File from '../models/File';
 import Order from '../models/Order';
 import Recipient from '../models/Recipient';
 // import Notification from '../schemas/Notification';
@@ -75,6 +76,13 @@ class OrderController {
           model: Deliveryman,
           as: 'deliveryman',
           attributes: ['name', 'email'],
+          include: [
+            {
+              model: File,
+              as: 'avatar',
+              attributes: ['path', 'url'],
+            },
+          ],
         },
         {
           model: Recipient,
@@ -87,12 +95,6 @@ class OrderController {
     if (!order) {
       return res.status(400).json({ error: 'Order does not exists' });
     }
-
-    /*     if (order.end_date !== null) {
-      return res
-        .status(400)
-        .json({ error: 'The Order has already been delivered.' });
-    } */
 
     const { recipient_id, deliveryman_id, product } = req.body;
 
@@ -119,14 +121,6 @@ class OrderController {
       deliveryman_id,
       product
     );
-
-    /* const startHour = setHours(8);
-
-    if (isBefore(startHour, new Date())) {
-      return res.status(401).json({
-        error: 'You can only only from 08h',
-      });
-    } */
 
     return res.json(orderUpdated);
   }

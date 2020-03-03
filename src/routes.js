@@ -1,9 +1,12 @@
 import { Router } from 'express';
 import multer from 'multer';
+import CloseDeliveryController from './app/controllers/CloseDeliveryController';
 import DeliverymanController from './app/controllers/DeliverymanController';
 import FileController from './app/controllers/FileController';
 import NotificationControle from './app/controllers/NotificationController';
 import OrderController from './app/controllers/OrderController';
+import OrderListDoneController from './app/controllers/OrderListDoneController';
+import OrderListPendingController from './app/controllers/OrderListPendingController';
 import PickUpPackageController from './app/controllers/PickUpPackageController';
 import RecipientController from './app/controllers/RecipientController';
 import SessionController from './app/controllers/SessionController';
@@ -16,7 +19,15 @@ const upload = multer(multerConfig);
 
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
-routes.get('/deliveryman/:id/notifications', NotificationControle.index);
+routes.get('/deliveryman/:id/notifications', NotificationControle.index); // temp
+
+routes.put('/orders/:id/start/:idDeliveryman', PickUpPackageController.update);
+routes.put('/orders/:id/end/:idDeliveryman', CloseDeliveryController.update);
+routes.get(
+  '/deliveryman/:id/deliveries/pending',
+  OrderListPendingController.index
+);
+routes.get('/deliveryman/:id/deliveries/done', OrderListDoneController.index);
 
 routes.use(authMiddleware);
 
@@ -31,7 +42,6 @@ routes.put('/recipients/:id', RecipientController.update);
 routes.put('/users', UserController.update);
 routes.put('/deliverers/:id', DeliverymanController.update);
 routes.put('/orders/:id', OrderController.update);
-routes.put('/orders/:id/start/:idDeliveryman', PickUpPackageController.update);
 
 routes.delete('/recipients/:id', RecipientController.delete);
 routes.delete('/deliverers/:id', DeliverymanController.delete);
