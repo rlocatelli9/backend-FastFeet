@@ -11,6 +11,7 @@ import {
 } from 'date-fns';
 import { Op } from 'sequelize';
 import Deliveryman from '../models/Deliveryman';
+import File from '../models/File';
 import Order from '../models/Order';
 import Recipient from '../models/Recipient';
 
@@ -28,6 +29,13 @@ class PickUpPackageController {
           model: Deliveryman,
           as: 'deliveryman',
           attributes: ['name', 'email'],
+          include: [
+            {
+              model: File,
+              as: 'avatar',
+              attributes: ['path', 'url'],
+            },
+          ],
         },
       ],
     });
@@ -36,7 +44,9 @@ class PickUpPackageController {
       return res.status(400).json({ error: 'Order does not exists' });
     }
 
-    if (!(order.deliveryman_id !== idDeliveryman)) {
+    const parsedDeliveryId = Number(idDeliveryman);
+
+    if (order.deliveryman_id !== parsedDeliveryId) {
       return res
         .status(401)
         .json({ error: 'This order is not from this deliveryman' });
@@ -65,9 +75,6 @@ class PickUpPackageController {
     );
     const parsedHourEnd = parseISO(format(hourEnd, "yyyy-MM-dd'T'HH:mm:ssxxx"));
 
-    console.log(parsedDate);
-    console.log(parsedHourStart);
-
     if (
       !(
         isBefore(parsedHourStart, new Date()) &&
@@ -79,6 +86,14 @@ class PickUpPackageController {
         .json({ error: 'Orders can only be picked up between 8AM and 6PM.' });
     }
 
+    const deliverymanExists = await Deliveryman.findOne({
+      where: { id: idDeliveryman, deleted_at: null },
+    });
+
+    if (!deliverymanExists) {
+      return res.status(400).json({ error: 'Deliveryman does not exists' });
+    }
+
     const totalPickUp = await Order.findAndCountAll({
       where: {
         deliveryman_id: idDeliveryman,
@@ -88,6 +103,9 @@ class PickUpPackageController {
         },
       },
     });
+
+    console.log(totalPickUp.count);
+    console.log(date);
 
     if (totalPickUp.count >= 5) {
       return res.status(401).json({
