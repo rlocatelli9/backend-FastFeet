@@ -2,6 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import CloseDeliveryController from './app/controllers/CloseDeliveryController';
 import DeliverymanController from './app/controllers/DeliverymanController';
+import DeliveryProblemsController from './app/controllers/DeliveryProblemsController';
 import FileController from './app/controllers/FileController';
 import NotificationControle from './app/controllers/NotificationController';
 import OrderController from './app/controllers/OrderController';
@@ -33,10 +34,13 @@ routes.use(authMiddleware);
 
 routes.get('/deliverers', DeliverymanController.index);
 routes.get('/orders', OrderController.index);
+routes.get('/delivery/problems', DeliveryProblemsController.index);
+routes.get('/delivery/:id/problems', DeliveryProblemsController.show);
 
 routes.post('/recipients', RecipientController.store);
 routes.post('/deliverers', DeliverymanController.store);
 routes.post('/orders', OrderController.store);
+routes.post('/delivery/:id/problems', DeliveryProblemsController.store);
 
 routes.put('/recipients/:id', RecipientController.update);
 routes.put('/users', UserController.update);
