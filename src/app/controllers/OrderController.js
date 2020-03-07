@@ -14,6 +14,10 @@ class OrderController {
       where: { canceled_at: null },
     });
 
+    if (!orders) {
+      return res.status(400).json({ error: 'Order does not exists' });
+    }
+
     return res.json(orders);
   }
 
