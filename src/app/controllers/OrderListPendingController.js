@@ -3,6 +3,8 @@ import Order from '../models/Order';
 
 class OrderListPendingController {
   async index(req, res) {
+    const { page = 1 } = req.query;
+
     const { id } = req.params;
 
     const deliverymanExists = await Deliveryman.findOne({
@@ -19,6 +21,9 @@ class OrderListPendingController {
         canceled_at: null,
         end_date: null,
       },
+      order: [['id', 'DESC']],
+      limit: 10,
+      offset: (page - 1) * 10,
     });
 
     if (orders.count === 0) {

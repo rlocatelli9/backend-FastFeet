@@ -4,9 +4,13 @@ import File from '../models/File';
 
 class DeliverymanController {
   async index(req, res) {
+    const { page = 1 } = req.query;
     const deliverers = await Deliveryman.findAll({
       where: { deleted_at: null },
       attributes: ['id', 'name', 'email', 'avatar_id'],
+      order: [['id', 'DESC']],
+      limit: 10,
+      offset: (page - 1) * 10,
       include: [
         {
           model: File,

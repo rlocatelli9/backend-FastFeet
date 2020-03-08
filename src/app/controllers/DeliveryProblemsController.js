@@ -8,8 +8,12 @@ import Recipient from '../models/Recipient';
 
 class DeliveryProblemsController {
   async index(req, res) {
+    const { page = 1 } = req.query;
     const problems = await DeliveryProblems.findAll({
       attributes: ['id', 'description'],
+      order: [['id', 'DESC']],
+      limit: 10,
+      offset: (page - 1) * 10,
       include: [
         {
           model: Order,

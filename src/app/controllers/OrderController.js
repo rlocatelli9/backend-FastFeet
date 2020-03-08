@@ -10,8 +10,13 @@ import Recipient from '../models/Recipient';
 
 class OrderController {
   async index(req, res) {
+    const { page = 1 } = req.query;
+
     const orders = await Order.findAll({
       where: { canceled_at: null },
+      order: [['id', 'DESC']],
+      limit: 10,
+      offset: (page - 1) * 10,
     });
 
     if (!orders) {

@@ -5,6 +5,8 @@ import Order from '../models/Order';
 
 class OrderListDoneController {
   async index(req, res) {
+    const { page = 1 } = req.query;
+
     const { id } = req.params;
 
     const deliverymanExists = await Deliveryman.findOne({
@@ -23,6 +25,9 @@ class OrderListDoneController {
           [Op.ne]: null, // WHERE end_date NOT NULL;
         },
       },
+      order: [['id', 'DESC']],
+      limit: 10,
+      offset: (page - 1) * 10,
       include: [
         {
           model: File,
