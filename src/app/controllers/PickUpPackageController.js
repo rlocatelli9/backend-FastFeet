@@ -104,10 +104,7 @@ class PickUpPackageController {
       },
     });
 
-    console.log(totalPickUp.count);
-    console.log(date);
-
-    if (totalPickUp.count >= 5) {
+    if (totalPickUp.count > 4) {
       return res.status(401).json({
         error: 'You have already reached the limit of 5 withdrawals per day.',
       });
