@@ -8,7 +8,7 @@ class CancellationMail {
   }
 
   async handle({ data }) {
-    const { order } = data;
+    const { order, order_problem } = data;
 
     await Mail.sendMail({
       to: `${order.deliveryman.name} <${order.deliveryman.email}>`, // list of receivers
@@ -25,6 +25,7 @@ class CancellationMail {
             locale: pt,
           }
         ),
+        description: order_problem.description,
       },
     });
   }

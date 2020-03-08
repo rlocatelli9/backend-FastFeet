@@ -1,4 +1,6 @@
 import * as Yup from 'yup';
+import Queue from '../../lib/Queue';
+import CancellationMail from '../jobs/CancellationMail';
 import Deliveryman from '../models/Deliveryman';
 import DeliveryProblems from '../models/DeliveryProblems';
 import Order from '../models/Order';
@@ -92,29 +94,26 @@ class DeliveryProblemsController {
       return res.status(400).json({ error: 'Order does not exists' });
     }
 
-    const { delivery_id } = await DeliveryProblems.create({
+    const deliveryProblems = await DeliveryProblems.create({
       delivery_id: id,
       description,
     });
 
-    return res.json({
-      id,
-      delivery_id,
-      description,
-    });
+    return res.json(deliveryProblems);
   }
 
   async delete(req, res) {
-    const order_problem = await DeliveryProblems.findByPk(req.params.id);
+    const { id } = req.params;
+    const order_problem = await DeliveryProblems.findByPk(id);
 
     if (!order_problem) {
       return res.status(401).json({ error: 'Order problem not found' });
     }
 
-    const { order_id } = order_problem;
+    const { delivery_id } = order_problem;
 
     const order = await Order.findOne({
-      where: { id: order_id, canceled_at: null },
+      where: { id: delivery_id, canceled_at: null },
       attributes: ['id', 'product'],
       include: [
         {
@@ -138,10 +137,10 @@ class DeliveryProblemsController {
 
     order.canceled_at = new Date();
 
-    /* await Queue.add(CancelOrderMail.key, {
+    await Queue.add(CancellationMail.key, {
       order,
       order_problem,
-    }); */
+    });
 
     await order.save();
 
