@@ -135,6 +135,13 @@ class OrderController {
   }
 
   async delete(req, res) {
+    const schema = Yup.object().shape({
+      description: Yup.string().required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation fails' });
+    }
     const order = await Order.findByPk(req.params.id, {
       where: { canceled_at: null },
       include: [
@@ -168,8 +175,13 @@ class OrderController {
 
     await order.save();
 
+    const order_problem = {
+      description: req.body.description,
+    };
+
     await Queue.add(CancellationMail.key, {
       order,
+      order_problem,
     });
 
     return res.json(order);
