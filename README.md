@@ -50,28 +50,28 @@ O destinatário não se autentica no sistema, por não possuir senha.
 
 Administradores autenticados na aplicação realiza o cadastro de entregadores na plataforma.
 
-**4. Gestão de encomendas**
+**4. Gestão de encomendas** :heavy_check_mark:
 
 Administradores autenticados cadastram encomendas para os entregadores. Para essa gestão, obedecem os seguintes critérios:
 
-- As retiradas só podem ser feitas entre as 08:00 e 18:00h. :heavy_check_mark:
-- A **data de início** é cadastrada assim que é feita a retirada do produto pelo entregador. :heavy_check_mark:
+- As retiradas só podem ser feitas entre as 08:00 e 18:00h.
+- A **data de início** é cadastrada assim que é feita a retirada do produto pelo entregador.
 - A **data de término** da entrega é cadatrada somente quando o entregador finaliza a determinada entrega.
-- Essa funcionalidade é permitida somente para administradores autenticados na aplicação. :heavy_check_mark:
+- Essa funcionalidade é permitida somente para administradores autenticados na aplicação.
 
-**5. Visualizar encomendas**
+**5. Visualizar encomendas** :heavy_check_mark:
 
 O entregador pode visualizar as encomendas atribuidas a ele, que **não estejam entregues ou canceladas**;
 
 Permitido também que o mesmo possa listar as encomendas que já foram **entregues** por ele.
 
-**6. Alterar status de encomendas**
+**6. Alterar status de encomendas** :heavy_check_mark:
 
 É permitido ao entregador pode fazer **5 retiradas por dia**.
 
 Para a funcionalidade de finalizar a entrega, é permitido o envio de uma assinatura digital.
 
-**7. Cadastrar problemas nas entregas**
+**7. Cadastrar problemas nas entregas** :heavy_check_mark:
 
 O entregador nem sempre conseguirá entregar as encomendas com sucesso, algumas vezes o destinatário pode estar ausente, ou o próprio entregador poderá ter algum problema com seu veículo na hora de entregar. Com isso, é permitido:
 
@@ -97,6 +97,16 @@ Technologies used in the development of the project:
 - [Postgres](https://www.postgresql.org/)
 - [dotenv](https://www.npmjs.com/package/dotenv)
 - [multer](https://github.com/expressjs/multer)
+- [date-fns](https://date-fns.org/)
+- [MongoDB](https://www.mongodb.com/)
+- [mongoose](https://mongoosejs.com/)
+- [nodemailer](https://nodemailer.com/about/)
+- [Handlebars](https://handlebarsjs.com/)
+- [Bee-Queue](https://github.com/bee-queue/bee-queue)
+- [Redis](https://redis.io/)
+- [Sentry](https://sentry.io/)
+- [express-async-errors](npmjs.com/package/express-async-errors)
+- [Youch](https://www.npmjs.com/package/youch)
 
 ## :memo: Licença
 
