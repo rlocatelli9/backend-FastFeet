@@ -49,7 +49,11 @@ routes.put('/orders/:id', OrderController.update);
 
 routes.delete('/recipients/:id', RecipientController.delete);
 routes.delete('/deliverers/:id', DeliverymanController.delete);
-routes.delete('/problem/:id/cancel-delivery', OrderController.delete);
+routes.delete('/problem/:id/delete-order', OrderController.delete);
+routes.delete(
+  '/problem/:id/cancel-delivery',
+  DeliveryProblemsController.delete
+);
 
 routes.post('/files', upload.single('file'), FileController.store);
 
