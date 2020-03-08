@@ -105,8 +105,6 @@ Technologies used in the development of the project:
 - [dotenv](https://www.npmjs.com/package/dotenv)
 - [multer](https://github.com/expressjs/multer)
 - [date-fns](https://date-fns.org/)
-- [MongoDB](https://www.mongodb.com/)
-- [mongoose](https://mongoosejs.com/)
 - [nodemailer](https://nodemailer.com/about/)
 - [Handlebars](https://handlebarsjs.com/)
 - [Bee-Queue](https://github.com/bee-queue/bee-queue)
