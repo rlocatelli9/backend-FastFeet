@@ -7,11 +7,22 @@
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/rlocatelli9/backend-FastFeet?color=%2304D361">
 
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/rlocatelli9/backend-FastFeet">
+
+  <a href="https://github.com/rlocatelli9/backend-FastFeet/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/rlocatelli9/backend-FastFeet">
+  </a>
+
+  <a href="https://github.com/rlocatelli9/backend-FastFeet/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/rlocatelli9/backend-FastFeet">
+  </a>
+
   <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361">
 
   <a href="https://github.com/rlocatelli9/backend-FastFeet/stargazers">
     <img alt="Stargazers" src="https://img.shields.io/github/stars/rlocatelli9/backend-FastFeet?style=social">
   </a>
+
 </p>
 
 <p align="center">
