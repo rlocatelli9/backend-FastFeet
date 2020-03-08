@@ -23,11 +23,11 @@
 
 ## :rocket: Sobre o Projeto
 
-Este projeto é o desenvolvimento de um back-end bem estruturado para uma transportadora fictícia, o FastFeet. **O Projeto está em andamento e em constante atualização**
+Este projeto é o desenvolvimento de um back-end bem estruturado para uma transportadora fictícia, o FastFeet. Esse desafio faz parte do Desafio Final, que é uma aplicação completa (Back-end, Front-end e Mobile) que é avaliada para emissão do Certificado do Bootcamp GoStack! **O Projeto está em andamento e em constante atualização**
 
 ## :rocket: Funcionalidades
 
-Abaixo estão descritas as funcionalidades que você deve adicionar em sua aplicação.
+Abaixo estão descritas as funcionalidades da aplicação.
 
 **1. Autenticação** :heavy_check_mark:
 
