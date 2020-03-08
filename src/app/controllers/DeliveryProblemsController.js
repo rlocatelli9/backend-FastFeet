@@ -44,11 +44,16 @@ class DeliveryProblemsController {
 
   async show(req, res) {
     const { id } = req.params;
+    const { page = 1 } = req.query;
 
-    const problem = DeliveryProblems.findAll({
+    const problem = await DeliveryProblems.findAll({
       where: {
         delivery_id: id,
       },
+      attributes: ['id', 'description'],
+      order: [['id', 'DESC']],
+      limit: 10,
+      offset: (page - 1) * 10,
       include: [
         {
           model: Order,
