@@ -34,6 +34,7 @@ routes.use(authMiddleware);
 
 routes.get('/deliverers', DeliverymanController.index);
 routes.get('/orders', OrderController.index);
+routes.get('/recipients', RecipientController.index);
 routes.get('/delivery/problems', DeliveryProblemsController.index);
 routes.get('/delivery/:id/problems', DeliveryProblemsController.show);
 
