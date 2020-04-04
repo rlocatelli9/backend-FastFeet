@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import Queue from '../../lib/Queue';
 import CancellationMail from '../jobs/CancellationMail';
+import { Op } from 'sequelize';
 import RegisterMail from '../jobs/RegisterMail';
 import Deliveryman from '../models/Deliveryman';
 import File from '../models/File';
@@ -10,13 +11,17 @@ import Recipient from '../models/Recipient';
 
 class OrderController {
   async index(req, res) {
-    const { page = 1 } = req.query;
+    const { page = 1, isLike } = req.query;
 
     const orders = await Order.findAll({
-      where: { canceled_at: null },
-      order: [['id', 'DESC']],
-      limit: 10,
-      offset: (page - 1) * 10,
+      where: {
+        product: {
+          [Op.iLike]: `%${isLike}%`,
+        },
+      },
+      order: [['id', 'ASC']],
+      limit: 5,
+      offset: (page - 1) * 5,
     });
 
     if (!orders) {
