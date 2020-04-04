@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
+import { Op } from 'sequelize';
 import Queue from '../../lib/Queue';
 import CancellationMail from '../jobs/CancellationMail';
-import { Op } from 'sequelize';
 import RegisterMail from '../jobs/RegisterMail';
 import Deliveryman from '../models/Deliveryman';
 import File from '../models/File';
