@@ -15,8 +15,8 @@ class DeliverymanController {
       },
       attributes: ['id', 'name', 'email', 'avatar_id'],
       order: [['id', 'ASC']],
-      limit: 10,
-      offset: (page - 1) * 10,
+      limit: 5,
+      offset: (page - 1) * 5,
       include: [
         {
           model: File,

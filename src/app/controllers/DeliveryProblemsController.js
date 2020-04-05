@@ -11,9 +11,9 @@ class DeliveryProblemsController {
     const { page = 1 } = req.query;
     const problems = await DeliveryProblems.findAll({
       attributes: ['id', 'description'],
-      order: [['id', 'DESC']],
-      limit: 10,
-      offset: (page - 1) * 10,
+      order: [['id', 'ASC']],
+      limit: 5,
+      offset: (page - 1) * 5,
       include: [
         {
           model: Order,

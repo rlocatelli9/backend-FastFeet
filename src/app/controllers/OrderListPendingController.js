@@ -21,9 +21,9 @@ class OrderListPendingController {
         canceled_at: null,
         end_date: null,
       },
-      order: [['id', 'DESC']],
-      limit: 10,
-      offset: (page - 1) * 10,
+      order: [['id', 'ASC']],
+      limit: 5,
+      offset: (page - 1) * 5,
     });
 
     if (orders.count === 0) {

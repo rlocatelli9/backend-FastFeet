@@ -25,9 +25,9 @@ class OrderListDoneController {
           [Op.ne]: null, // WHERE end_date NOT NULL;
         },
       },
-      order: [['id', 'DESC']],
-      limit: 10,
-      offset: (page - 1) * 10,
+      order: [['id', 'ASC']],
+      limit: 5,
+      offset: (page - 1) * 5,
       include: [
         {
           model: File,

@@ -14,8 +14,8 @@ class RecipientController {
         },
       },
       order: [['id', 'ASC']],
-      limit: 10,
-      offset: (page - 1) * 10,
+      limit: 5,
+      offset: (page - 1) * 5,
     });
 
     return res.json(recipients);
